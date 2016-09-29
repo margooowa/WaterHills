@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="/template/common.xhtml">
+		<ui:define name="inputArea">
+			<h:form id="form">
+				<div class="row">
+					<div class="input-field col s6 offset-s3">
+						<p:inputText id="array" required="true"
+							value="#{chartBean.inputNumberArray}"
+							validatorMessage="Please input only numbers"
+							requiredMessage="Value is required">
+							<f:validateRegex pattern="[0-9 ]+" />
+							<p:ajax update="validArray" event="keyup" />
+						</p:inputText>
+						<p:outputLabel
+							value="Input array of numbers (as separator use space)"
+							for="array" />
+						<p:message for="array" id="validArray" />
+					</div>
+				</div>
+				<br />
+				<div class="row center">
+					<p:commandButton value="ACTION" id="ajax" update="validArray chartPanel"
+						actionListener="#{chartBean.generateChartAndResult}"
+						class="btn-large deep-orange"
+						style="background: #FF5722;font-weight:100" validateClient="true" />
+
+				</div>
+
+				<br />
+				<h:panelGroup id="chartPanel">
+					<p:chart type="bar" model="#{chartBean.barModel}"
+						style="height:300px" rendered="#{chartBean.barModel ne null}" />
+
+					<br />
+
+					<h:panelGroup rendered="#{chartBean.barModel ne null}">
+						<div class="row">
+							<div class="col s2 offset-s5 center">
+								<div class="card-panel  deep-orange">
+									<p:outputLabel id="result" class="white-text"
+										value="Collected water: #{chartBean.result}" />
+								</div>
+							</div>
+						</div>
+					</h:panelGroup>
+
+				</h:panelGroup>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
