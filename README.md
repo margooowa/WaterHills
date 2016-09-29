@@ -3,7 +3,8 @@ Application which takes an array as an input, and calculates the volume of water
 
   I am using two variants of algorithm. This is because I found one solution and then another, better one, but I decided to leave them two for comparing and use their results for different purposes in UI. Implementation in WaterHillsServiceBean class
 
-  1.	int[] getWaterForEachHill(int initialArray[]) (imlementation )
+  1.	int[] getWaterForEachHill(int initialArray[])
+  
 It was my first variant. The idea is to have two additional arrays: one that contains the highest elements to the left and another contains the highest elements to the right. In the end founding amount of water for each hill by min(left[i],right[i])-arr[i]. This algorithm returns array of values not just one final result because I wanted to show series on the chart in UI.
 
   Time Complexity: O(n)
