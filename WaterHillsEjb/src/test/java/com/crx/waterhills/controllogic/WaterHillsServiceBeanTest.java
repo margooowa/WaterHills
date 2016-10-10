@@ -7,15 +7,9 @@ import javax.naming.NamingException;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
 public class WaterHillsServiceBeanTest {
 
-
-	@Mock
 	private WaterHillsServiceBean waterService;
 
 	@Before
@@ -27,7 +21,7 @@ public class WaterHillsServiceBeanTest {
 	public void testTotalWaterAmount() {
 		int[] arr = new int[] { 9, 1, 9 };
 		int expectedResult = 8;
-		assertEquals(expectedResult, waterService.getTotalWaterAmount(arr));		
+		assertEquals(expectedResult, waterService.getTotalWaterAmount(arr));
 	}
 
 	@Test

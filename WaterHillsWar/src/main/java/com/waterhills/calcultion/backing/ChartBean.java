@@ -26,8 +26,8 @@ public class ChartBean implements Serializable, ChartView {
 	public static final String BEAN_NAME = "chartBean";
 
 	@EJB
-	WaterHillsService waterService;
-	private ChartController controller;
+	private WaterHillsService waterService;
+	private  ChartController controller;
 	private String inputNumberArray;
 	private BarChartModel barModel;
 	private Integer result;
@@ -72,22 +72,5 @@ public class ChartBean implements Serializable, ChartView {
 		this.barModel = barModel;
 	}
 
-	// //
-
-	public ChartController getController() {
-		return controller;
-	}
-
-	public void setController(ChartController controller) {
-		this.controller = controller;
-	}
-
-	public void setWaterService(WaterHillsService waterService) {
-		this.waterService = waterService;
-	}
-
-	public WaterHillsService getWaterService() {
-		return waterService;
-	}
-
+	
 }

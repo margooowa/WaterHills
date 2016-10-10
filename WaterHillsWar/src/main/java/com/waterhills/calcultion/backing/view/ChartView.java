@@ -13,6 +13,8 @@ public interface ChartView {
 	
 	public void setBarModel(BarChartModel barModel);
 	
+	public BarChartModel getBarModel();
+	
 	public String getInputNumberArray();
 
 	public void setInputNumberArray(String inputArray);

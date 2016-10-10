@@ -16,9 +16,11 @@ import com.waterhills.utils.ConversionUtils;
  */
 public class ChartController {
 
+	private static final String HILLS = "hills";
+	private static final String WATER = "water";
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ChartView view;
-	private WaterHillsService waterService;
+	protected ChartView view;
+	protected WaterHillsService waterService;
 
 	public ChartController(ChartView view, WaterHillsService waterService) {
 		this.view = view;
@@ -29,8 +31,7 @@ public class ChartController {
 	 * Calculating water and creating bar chart model.
 	 */
 	public void generateChartAndResult() {
-		int[] numbers = ConversionUtils.parseStringToArray(view
-				.getInputNumberArray());
+		int[] numbers = ConversionUtils.parseStringToArray(view.getInputNumberArray());
 		int[] resultWaterArray = countWater(numbers);
 
 		createBarModel(numbers, resultWaterArray);
@@ -44,7 +45,7 @@ public class ChartController {
 	 *            inputed values.
 	 * @return array of water in hills.
 	 */
-	public int[] countWater(int[] numbers) {
+	protected int[] countWater(int[] numbers) {
 		int[] resultArray = waterService.getWaterForEachHill(numbers);
 		int result = waterService.getTotalWaterAmount(numbers);
 		view.setResult(result);
@@ -59,16 +60,16 @@ public class ChartController {
 	 * @param resultArray
 	 *            calculated array(saved water in hills)
 	 */
-	private void createBarModel(int[] numbers, int[] resultArray) {
+	protected void createBarModel(int[] numbers, int[] resultArray) {
 		BarChartModel barModel = new BarChartModel();
 
 		// hills series creating
 		ChartSeries hills = new ChartSeries();
-		hills.setLabel("Hills");
+		hills.setLabel(HILLS);
 
 		// water setries creating
 		ChartSeries water = new ChartSeries();
-		water.setLabel("Water");
+		water.setLabel(WATER);
 
 		// fill series with data
 		int columnNr = 1;
@@ -108,7 +109,5 @@ public class ChartController {
 	public ChartView getView() {
 		return view;
 	}
-	
-	
 
 }
